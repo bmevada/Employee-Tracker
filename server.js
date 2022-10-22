@@ -41,7 +41,7 @@ connection.connect((err) => {
     );
 
 // Start main function
-badCompany();
+viewCompany();
 });
 
 // Prompt the user with the initial questions
@@ -51,7 +51,7 @@ const initialQuestions = [
         message: 'What would you like to do?',
         type: 'list',
         name: 'options',
-        choices: ['Add a new employee', 'Add a new department', 'Add a new role', 'View all employees', 'View all departments', 'View all roles'],
+        choices: ['Add a new employee', 'Add a new department', 'Add a new role', 'Remove an employee', 'Remove a department', 'Remove a role', 'Update an employee', 'Update a department', 'Update a role', 'View all employees', 'View all employees by manager','View all departments', 'View all roles'],
     }
 ];
 
@@ -66,18 +66,27 @@ const addEmployee = [
         message: 'What is the employees last name?',
         type: 'input',
         name: 'lastName',
-  
     },
     {
-        message: "What is the employee's role?",
+        message: "What is the employee's title of their role?",
         type: 'input',
-        name: 'employeeRole',
-        
+        name: 'title',
+    
+    },
+    {
+        message: "What is the employee's id",
+        type: 'input',
+        name: 'role_id',
+    },
+    {
+        message: "What is the employee's salary",
+        type: 'input',
+        name: 'salary',
     },
     {   // Define manager info to the new employee
         message: "What is the employee's manager's id?",
         type: 'input',
-        name: 'managerId',
+        name: 'manager_id',
         
     },
 ];
@@ -106,6 +115,90 @@ function addNewDepartment() {
     });
 }
 
+// Add delete function for Employee, Department and Role
+
+const deleteEmployee = () => {
+    connection.query(allStaff, (err, results) => {
+      if (err) throw err;
+
+      console.table(results);
+  
+      inquirer
+        .prompt([
+          {
+            message: "Enter employee role ID of the employee you would like to remove",
+            name: "removeRoleId",
+            type: "input",
+          },
+        ])
+        .then((answer) => {
+          connection.query(`Remove an employee`, {
+            id: answer.removeID,
+          });
+          viewCompany();
+        });
+    });
+  };
+
+const deleteDepartment = () => {
+    const query = "SELECT * FROM department";
+    connection.query(query, (err, results) => {
+      if (err) throw err;
+      inquirer
+        .prompt([
+          {
+            name: "department",
+            type: "list",
+            // make a new array and loop through, return each item ie.(department)
+            choices: function () {
+              let choiceArr = results.map((choice) => choice.name);
+              return choiceArr;
+            },
+            // pick the array item to be deleted
+            message: "Which department would you like to delete",
+          },
+        ])
+        .then((answer) => {
+          connection.query(`Remove a department`, {
+            name: answer.dept,
+          });
+          viewCompany();
+        });
+    });
+  };
+  
+ 
+  const deleteRole = () => {
+    query = `SELECT * FROM roles`;
+    connection.query(query, (err, results) => {
+      if (err) throw err;
+  
+      inquirer
+        .prompt([
+          {
+            name: "removeRole",
+            type: "list",
+            choice: function () {
+              let choiceArr = results.map((choice) => choice.title);
+              return choiceArr;
+            },
+  
+            message: "Which role would you like to delete",
+          },
+        ])
+        .then((answer) => {
+          connection.query(`Remove a role`, {
+            title: answer.removeRole,
+          });
+          viewCompany();
+        });
+    });
+  };
+
+// Add delete function for Employee, Department and Role
+  
+  
+  
 
 
 

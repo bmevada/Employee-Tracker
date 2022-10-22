@@ -1,7 +1,4 @@
--- This file contains functions for performing specific SQL queries used. 
--- The file is used to pre-populate the database, making the development of individual features much easier.
-
---  Add department, roles and employee
+USE employeeDB;
 
 
 INSERT INTO department(name)
@@ -9,30 +6,28 @@ VALUES
 ('Sales'),
 ('Engineering'),
 ('Legal'),
-('Finance'),
+('Finance');
 
-INSERT INTO roles(department_id, title, department, salary)
+INSERT INTO role(title, salary, department_id)
 VALUES
-('1','Sales Lead', 'Sales', '100000'),
-('2','Salesperson', 'Sales', '80000'),
-('3','Lead Engineer', 'Engineering', '150000'),
-('4','Software Engineer', 'Engineering', '120000'),
-('5','Account Manager', 'Finance', '160000'),
-('6','Accountant', 'Finance', '125000'),
-('7','Legal Team Lead', 'Legal', '250000'),
-('8','Lawyer', 'Legal', '190000'),
+('Sales Lead', 100000, 1),
+('Salesperson', 80000, 2),
+('Lead Engineer', 150000, 3),
+('Software Engineer', 120000,4),
+('Account Manager', 160000, 5),
+('Accountant', 125000, 6),
+('Legal Team Lead', 250000, 7),
+('Lawyer', 190000, 8);
 
 
-
-INSERT INTO employee(role_id, first_name, last_name) 
+INSERT INTO employee(first_name, last_name, role_id, manager_id) 
 VALUES
-('1', 'John', 'Doe'),
-('2', 'Mike', 'Chan'),
-('3', 'Ashely', 'Rodriquez'),
-('4', 'Kevin', 'Tupik'),
-('5', 'Kunal', 'Singh'),
-('6', 'Malia', 'Brown'),
-('7', 'Sarah', 'Lourd'),
-('8', 'Tom', 'Allen'),
+('John', 'Doe', 1, NULL),
+('Mike', 'Chan', 2, 1),
+('Ashely', 'Rodriquez', 3, NULL),
+('Kevin', 'Tupik', 4, 3),
+('Kunal', 'Singh', 5, NULL),
+('Malia', 'Brown', 6, 5),
+('Sarah', 'Lourd', 7, NULL),
+('Tom', 'Allen', 8, 7);
 
-UPDATE `employeeDB`.`employee` SET `manager_id` = '1' WHERE (`id` > '1');
