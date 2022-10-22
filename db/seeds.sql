@@ -1,7 +1,7 @@
 -- This file contains functions for performing specific SQL queries used. 
 -- The file is used to pre-populate the database, making the development of individual features much easier.
 
---  Add department, role and employee
+--  Add department, roles and employee
 
 
 INSERT INTO department(name)
