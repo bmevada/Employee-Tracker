@@ -2,7 +2,7 @@
 const consoletable = require("console.table");
 const mysql2 = require("mysql2");
 const inquirer = require("inquirer");
-const chalk = require("chalk");
+// const chalk = require("chalk");
 const figlet = require("figlet");
 const { resolveSoa } = require("dns");
 const { rootCertificates } = require("tls");
