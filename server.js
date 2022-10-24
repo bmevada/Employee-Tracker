@@ -196,7 +196,6 @@ const deleteDepartment = () => {
     });
 };
 
-
 const deleteRole = () => {
     query = `select * from role`;
     connection.query(query, (err, results) => {
