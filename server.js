@@ -55,6 +55,33 @@ const initialQuestions = [
     }
 ];
 
+.then((answer) => {
+    switch (answer.action) {
+      case "Add a department":
+        addDepartment();
+        break;
+
+      case "Add an employee":
+        addEmployee();
+        break;
+
+      case "Add a role":
+        addRole();
+        break;
+
+      case "View a department":
+        viewDepartments();
+        break;
+
+      case "View employees":
+        viewEmployees();
+        break;
+
+      case "View a role":
+        viewRoles();
+        break;
+
+
 // Add variables to add a new employee
 const addEmployee = [
     {
@@ -195,8 +222,87 @@ const deleteDepartment = () => {
     });
   };
 
-// Add delete function for Employee, Department and Role
+// Add update function for Employee, Department and Role
   
+const updateEmployee = () => {
+    connection.query(allStaff, (err, results) => {
+      if (err) throw err;
+
+      console.table(results);
+  
+      inquirer
+        .prompt([
+          {
+            message: "Enter employee role ID of the employee you would like to update",
+            name: "updateRoleId",
+            type: "input",
+          },
+        ])
+        .then((answer) => {
+          connection.query(`Update an employee`, {
+            id: answer.updateID,
+          });
+          viewCompany();
+        });
+    });
+  };
+
+const updateDepartment = () => {
+    const query = "select * from department";
+    connection.query(query, (err, results) => {
+      if (err) throw err;
+      inquirer
+        .prompt([
+          {
+            name: "department",
+            type: "list",
+            // make a new array and loop through, return each item ie.(department)
+            choices: function () {
+              let choiceArr = results.map((choice) => choice.name);
+              return choiceArr;
+            },
+            // pick the array item to be deleted
+            message: "Which department would you like to update?",
+          },
+        ])
+        .then((answer) => {
+          connection.query(`Update a department`, {
+            name: answer.updateDept,
+          });
+          viewCompany();
+        });
+    });
+  };
+  
+  
+ 
+  const updateRole = () => {
+    query = `select * from role`;
+    connection.query(query, (err, results) => {
+      if (err) throw err;
+  
+      inquirer
+        .prompt([
+          {
+            name: "updateRole",
+            type: "list",
+            choice: function () {
+              let choiceArr = results.map((choice) => choice.title);
+              return choiceArr;
+            },
+  
+            message: "Which role would you like to update?",
+          },
+        ])
+        .then((answer) => {
+          connection.query(`Update a role`, {
+            title: answer.updateRole,
+          });
+          viewCompany();
+        });
+    });
+  };
+
   
   
 
