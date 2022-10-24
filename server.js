@@ -23,22 +23,22 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err;
   
-    console.table(chalk.white("\n Welcome to the Employee Tracker Database \n"));
+    // console.table(chalk.white("\n Welcome to the Employee Tracker Database \n"));
   
-    console.table(
-      chalk.yellow.bold(
-        `====================================================================================`
-      )
-    );
-    console.log(``);
-    console.table(chalk.yellow.bold(figlet.textSync("Employee Tracker")));
-    console.log(``);
-    console.log(``);
-    console.table(
-      chalk.green.bold(
-        `====================================================================================`
-      )
-    );
+    // console.table(
+    //   chalk.yellow.bold(
+    //     `====================================================================================`
+    //   )
+    // );
+    // console.log(``);
+    // console.table(chalk.yellow.bold(figlet.textSync("Employee Tracker")));
+    // console.log(``);
+    // console.log(``);
+    // console.table(
+    //   chalk.green.bold(
+    //     `====================================================================================`
+    //   )
+    // );
 
 // Start main function
 viewCompany();
@@ -55,117 +55,119 @@ const initialQuestions = [
     }
 ];
 
-.then((answer) => {
-    switch (answer.action) {
-      case "Add a department":
-        addDepartment();
-        break;
+// .then((answer) => {
+//     switch (answer.action) {
+//       case "Add a department":
+//         addDepartment();
+//         break;
 
-      case "Add an employee":
-        addEmployee();
-        break;
+//       case "Add an employee":
+//         addEmployee();
+//         break;
 
-      case "Add a role":
-        addRole();
-        break;
+//       case "Add a role":
+//         addRole();
+//         break;
 
-      case "View a department":
-        viewDepartments();
-        break;
+//       case "View a department":
+//         viewDepartments();
+//         break;
 
-      case "View employees":
-        viewEmployees();
-        break;
+//       case "View employees":
+//         viewEmployees();
+//         break;
 
-      case "View a role":
-        viewRoles();
-        break;
+//       case "View a role":
+//         viewRoles();
+//         break;
+//     }
 
 
-// Add variables to add a new employee
-const addEmployee = [
-    {
-        message: 'What is the employees first name?',
-        type: 'input',
-        name: 'firstName',
-    },
-    {
-        message: 'What is the employees last name?',
-        type: 'input',
-        name: 'lastName',
-    },
-    {
-        message: "What is the employee's title of their role?",
-        type: 'input',
-        name: 'title',
+
+// // Add variables to add a new employee
+// const addEmployee = [
+//     {
+//         message: 'What is the employees first name?',
+//         type: 'input',
+//         name: 'firstName',
+//     },
+//     {
+//         message: 'What is the employees last name?',
+//         type: 'input',
+//         name: 'lastName',
+//     },
+//     {
+//         message: "What is the employee's title of their role?",
+//         type: 'input',
+//         name: 'title',
     
-    },
-    {
-        message: "What is the employee's id",
-        type: 'input',
-        name: 'role_id',
-    },
-    {
-        message: "What is the employee's salary",
-        type: 'input',
-        name: 'salary',
-    },
-    {   // Define manager info to the new employee
-        message: "What is the employee's manager's id?",
-        type: 'input',
-        name: 'manager_id',
+//     },
+//     {
+//         message: "What is the employee's id",
+//         type: 'input',
+//         name: 'role_id',
+//     },
+//     {
+//         message: "What is the employee's salary",
+//         type: 'input',
+//         name: 'salary',
+//     },
+//     {   // Define manager info to the new employee
+//         message: "What is the employee's manager's id?",
+//         type: 'input',
+//         name: 'manager_id',
         
-    },
-];
+//     },
+// ];
 
-// Define the new employee roles
+// // Define the new employee roles
 
-function init() {
-    initialPrompt();
-    addNewDepartment();
-}
+// function init() {
+//     initialPrompt();
+//     addNewDepartment();
+// }
 
-function initialPrompt() {
-    inquirer.prompt(initialOptions).then((initialResponses) => {
-        console.log(initialResponses);
-    })
-};
+// function initialPrompt() {
+//     inquirer.prompt(initialOptions).then((initialResponses) => {
+//         console.log(initialResponses);
+//     })
+// };
 
-init();
+// init();
 
-module.exports = db;
+// module.exports = db;
 
-function addNewDepartment() {
-    inquirer.prompt(addDepartment).then((addDepartmentResponse) => {
-        const sql = `INSERT INTO department(name)
-        VALUES(${addDepartmentResponse})`;
-    });
-}
+// function addNewDepartment() {
+//     inquirer.prompt(addDepartment).then((addDepartmentResponse) => {
+//         const sql = `INSERT INTO department(name)
+//         VALUES(${addDepartmentResponse})`;
+//     });
+// }
 
-// Add delete function for Employee, Department and Role
+// // Add delete function for Employee, Department and Role
 
-const deleteEmployee = () => {
-    connection.query(allStaff, (err, results) => {
-      if (err) throw err;
+// const deleteEmployee = () => {
+//     connection.query(allStaff, (err, results) => {
+//       if (err) throw err;
 
-      console.table(results);
+//       console.table(results);
   
-      inquirer
-        .prompt([
-          {
-            message: "Enter employee role ID of the employee you would like to remove",
-            name: "removeRoleId",
-            type: "input",
-          },
-        ])
-        .then((answer) => {
-          connection.query(`Remove an employee`, {
-            id: answer.removeID,
-          });
-          viewCompany();
-        });
-    });
-  };
+//       inquirer
+//         .prompt([
+//           {
+//             message: "Enter employee role ID of the employee you would like to remove",
+//             name: "removeRoleId",
+//             type: "input",
+//           },
+//         ])
+//         .then((answer) => {
+//           connection.query(`Remove an employee`, {
+//             id: answer.removeID,
+//           });
+//           viewCompany();
+//         });
+//     });
+//   };
 
 const deleteDepartment = () => {
     const query = "select * from department";
