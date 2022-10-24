@@ -141,7 +141,7 @@ const deleteEmployee = () => {
   };
 
 const deleteDepartment = () => {
-    const query = "SELECT * FROM department";
+    const query = "select * from department";
     connection.query(query, (err, results) => {
       if (err) throw err;
       inquirer
@@ -169,7 +169,7 @@ const deleteDepartment = () => {
   
  
   const deleteRole = () => {
-    query = `SELECT * FROM roles`;
+    query = `select * from role`;
     connection.query(query, (err, results) => {
       if (err) throw err;
   
