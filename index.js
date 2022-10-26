@@ -1,4 +1,4 @@
-v//called out the prompt of inquirer, so only have to write "prompt"
+//called out the prompt of inquirer, so only have to write "prompt"
 const { prompt } = require("inquirer");
 //calling out any of the files within db, when calling db variable
 const db = require("./db");
@@ -45,6 +45,18 @@ function loadMainPrompts() {
                     value: "ADD_DEPARTMENT"
                 },
                 {
+                    name: "Remove Employee",
+                    value: "REMOVE_EMPLOYEE"
+                },
+                {
+                    name: "Remove Role",
+                    value: "REMOVE_ROLE"
+                },
+                {
+                    name: "Remove Department",
+                    value: "REMOVE_DEPARTMENT"
+                },
+                {
                     name: "Quit",
                     value: "QUIT"
                 }
@@ -75,6 +87,15 @@ function loadMainPrompts() {
             case "ADD_ROLE":
                 addRole();
                 break;
+            case "REMOVE_EMPLOYEE":
+                removeEmployee();
+                break;
+            case "REMOVE_DEPARTMENT":
+                removeDepartment();
+                break;
+            case "REMOVE_ROLE":
+                removeRole();
+                break;
             default:
                 quit();
         }
@@ -92,9 +113,6 @@ function viewEmployees() {
         })
         .then(() => loadMainPrompts());
 }
-
-
-
 
 
 // Update an employee's role
@@ -285,6 +303,68 @@ function addEmployee() {
                         })
                 })
         })
+}
+
+//Remove an employee
+function removeEmployee() {
+    db.findAllEmployees()
+        .then(([rows]) => {
+            let employees = rows;
+            const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
+                name: `${first_name} ${last_name}`,
+                value: id
+            }));
+
+            prompt([{
+                type: "list",
+                name: "employeeId",
+                message: "Which employee would you like to remove?",
+                choices: employeeChoices
+            }])
+                .then(res => db.removeEmployee(res.employeeId))
+                .then(() => loadMainPrompts())
+        })
+
+}
+
+//Remove a role
+function removeRole() {
+    db.findAllRoles()
+        .then(([rows]) => {
+            let roles = rows;
+            const roleChoices = roles.map(({ id, title }) => ({
+                name: title,
+                value: id
+            }));
+
+            prompt([{
+                type: "list",
+                name: "roleId",
+                message: "What role would you like to remove?",
+                choices: roleChoices
+            }])
+                .then(res => db.removeRole(res.roleId))
+                .then(() => loadMainPrompts())
+        })
+
+}
+
+//Remove a department
+function removeDepartment() {
+    db.findAllDepartments()
+        .then(([rows]) => {
+            let departments = rows;
+            const deapartmentChoices = departments.map(({ id, name }))
+            prompt([{
+                type: "list",
+                name: "departmentId",
+                message: "Which department would you like to remove?",
+                choices: deapartmentChoices
+            }])
+                .then(res => db.removeDepartment(res.departmentId))
+                .then(() => loadMainPrompts())
+        })
+
 }
 
 // Exit the application

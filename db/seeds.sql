@@ -1,12 +1,11 @@
 USE employeeDB;
 
-
 INSERT INTO department(name)
 VALUES 
 ('Sales'),
 ('Engineering'),
-('Legal'),
-('Finance');
+('Finance'),
+('Legal');
 
 INSERT INTO role(title, salary, department_id)
 VALUES

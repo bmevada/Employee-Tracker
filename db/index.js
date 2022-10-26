@@ -24,9 +24,29 @@ class DB {
             [roleId, employeeId]
         );
     }
+    createEmployee(employee) {
+        return this.connection.promise().query("INSERT INTO employee SET ?", employee);
+    }
 
     createDepartment(department) {
         return this.connection.promise().query("INSERT INTO department SET ?", department);
+    }
+    findAllDepartments() {
+        return this.connection.promise().query(
+          "SELECT department.id, department.name FROM department;"
+        );
+      }
+    removeEmployee(employeeId) {
+        return this.connection.promise().query("DELETE FROM employee WHERE id = ?", employeeId);
+
+    }
+    removeRole(RoleId) {
+        return this.connection.promise().query("DELETE FROM role WHERE id = ?", roleId);
+
+    }
+    removeDepartment(department_id) {
+        return this.connection.promise().query("DELETE FROM department WHERE id = ?", department_id);
+
     }
 
 }
