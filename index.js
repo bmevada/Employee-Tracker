@@ -357,11 +357,11 @@ function removeDepartment() {
             const deapartmentChoices = departments.map(({ id, name }))
             prompt([{
                 type: "list",
-                name: "departmentId",
+                name: "department_id",
                 message: "Which department would you like to remove?",
                 choices: deapartmentChoices
             }])
-                .then(res => db.removeDepartment(res.departmentId))
+                .then(res => db.removeDepartment(res.department_id))
                 .then(() => loadMainPrompts())
         })
 

@@ -40,7 +40,7 @@ class DB {
         return this.connection.promise().query("DELETE FROM employee WHERE id = ?", employeeId);
 
     }
-    removeRole(RoleId) {
+    removeRole(roleId) {
         return this.connection.promise().query("DELETE FROM role WHERE id = ?", roleId);
 
     }
