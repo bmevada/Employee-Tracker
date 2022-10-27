@@ -54,5 +54,23 @@ The following video shows an example of the application being used from the comm
 [![A video thumbnail shows the command-line employee management application with a play button overlaying the view.]](https://drive.google.com/file/d/1jVTza04-0P17E4m3G32z90lsGVoRNdTy/view)
 
 ## Deployed Application
+ - View all employees
+
+
+ - Add a New Employee
+
+ - Update Employee Role (John Doe)
+
+ - Add Department & Role
+ 
+ - Add New Employee to New Department
+
+ - Remove Role
+
+ - Remove Department
+
+
+
+
 
 
