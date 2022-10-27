@@ -3,13 +3,13 @@ Week 12: SQL Challenge
 
 ## Background
 
-Developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. These interfaces are called **content management systems (CMS)**. Your assignment this week is to build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
+Developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. These interfaces are called **content management systems (CMS)**. A command-line application has been built from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
 ## Links to deployed application
 
 [Link to deployed working application] https://drive.google.com/file/d/1jVTza04-0P17E4m3G32z90lsGVoRNdTy/view
 
-[Link to Github]https://github.com/bmevada/Employee-Tracker.git
+[Link to Github] https://github.com/bmevada/Employee-Tracker.git
 
 ## User Story
 
