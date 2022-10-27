@@ -51,23 +51,36 @@ THEN the user is prompted to select an employee to remove and the role is remove
 
 The following video shows an example of the application being used from the command line:
 
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.]](https://drive.google.com/file/d/1jVTza04-0P17E4m3G32z90lsGVoRNdTy/view)
+https://drive.google.com/file/d/1jVTza04-0P17E4m3G32z90lsGVoRNdTy/view
 
 ## Deployed Application
- - View all employees
+ - **View all employees**
+<img width="694" alt="view-all-employees" src="https://user-images.githubusercontent.com/109460560/198211008-0c9458ec-e6a8-44e2-9c63-7f9fe33e36a1.png">
 
 
- - Add a New Employee
+ - **Add a New Employee**
+<img width="627" alt="add-an-employee" src="https://user-images.githubusercontent.com/109460560/198211043-b2cb3721-a902-4923-84b3-2b546e104236.png">
 
- - Update Employee Role (John Doe)
 
- - Add Department & Role
+ - **Update Employee Role (John Doe)**
+ <img width="623" alt="update-an-employee" src="https://user-images.githubusercontent.com/109460560/198211089-b802c096-e541-4475-81a8-72ef780fc065.png">
+
+
+ - **Add Department & Role**
+ <img width="501" alt="add-department" src="https://user-images.githubusercontent.com/109460560/198211100-6a2495ad-2dd8-47a0-98ee-5b6818500143.png">
+
  
- - Add New Employee to New Department
+ - **Add New Employee to New Department**
+ <img width="655" alt="add-newemployee-newdepartment" src="https://user-images.githubusercontent.com/109460560/198211159-b9383fcb-ecfa-4c9a-b83e-595552dc1eea.png">
 
- - Remove Role
 
- - Remove Department
+ - **Remove Role**
+ <img width="638" alt="remove-role" src="https://user-images.githubusercontent.com/109460560/198211177-4e621139-fe40-4e6d-8694-5639b1b12622.png">
+
+
+ - **Remove Department**
+ <img width="618" alt="remove-department" src="https://user-images.githubusercontent.com/109460560/198211191-ca771591-ff10-43e5-945a-92984d8d687b.png">
+
 
 
 
