@@ -354,12 +354,15 @@ function removeDepartment() {
     db.findAllDepartments()
         .then(([rows]) => {
             let departments = rows;
-            const deapartmentChoices = departments.map(({ id, name }))
+            const departmentChoices = departments.map(({ id, name }) => ({
+                name: name,
+                value: id
+            }));
             prompt([{
                 type: "list",
                 name: "department_id",
                 message: "Which department would you like to remove?",
-                choices: deapartmentChoices
+                choices: departmentChoices
             }])
                 .then(res => db.removeDepartment(res.department_id))
                 .then(() => loadMainPrompts())
