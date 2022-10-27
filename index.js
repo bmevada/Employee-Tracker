@@ -376,4 +376,3 @@ function quit() {
     process.exit();
 }
 
-
